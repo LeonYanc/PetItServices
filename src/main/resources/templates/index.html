@@ -1,18 +1,50 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Petit_URL </title>
+    <title>Petit</title>
+    <style>
+        h1 {
+            font-size: 36px;
+            font-style: italic;
+            color: purple;
+        }
+    </style>
 </head>
 <body>
-<h1>Petit_URL</h1>
+<h1>Petit</h1>
+
+<!-- 生成短URL的表单 -->
 <form method="post" action="/shorten">
     <label for="longUrl">Entrez votre URL:</label>
     <input type="text" id="longUrl" name="longUrl">
     <button type="submit">Raccourcir votre URL</button>
 </form>
+
+<!-- 显示生成的短URL -->
 <div th:if="${shortUrl}">
     <p>Votre URL courte: <a th:href="'/' + ${shortUrl}" th:text="'/' + ${shortUrl}"></a></p>
 </div>
+
+<!-- 查找长URL的表单 -->
+<form method="post" action="/find-long-url">
+    <label for="shortUrl">Entrez le code court:</label>
+    <input type="text" id="shortUrl" name="shortUrl">
+    <button type="submit">Trouver le lien long</button>
+</form>
+
+<!-- 显示查找到的长URL -->
+<div th:if="${longUrl}">
+    <p>Long URL correspondant: <a th:href="${longUrl}" th:text="${longUrl}"></a></p>
+</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
 
